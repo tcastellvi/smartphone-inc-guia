@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smartphone Inc. · Resumen de reglas</title>
+<meta name="description" content="Smartphone Inc.: resumen de las 8 fases de cada ronda para la partida en clase (4 rondas).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<style>
+* { margin: 0; box-sizing: border-box }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100% }
+body { background: #D5DCE5; font: 32px/1.2 sans-serif }
+.top { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: #14233A; color: #F1F5FA; font: 700 17px 'Inter', Arial, sans-serif }
+.top a.t { color: inherit; text-decoration: none; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.top nav { display: flex; gap: 8px }
+.top nav a { color: #F1F5FA; text-decoration: none; background: #22385A; border-radius: 8px; padding: 8px 14px; font: 600 15px 'Inter', Arial, sans-serif }
+.top nav a span { color: #86BDEC; margin-right: 6px }
+main { padding: 16px 16px 8px }
+.sw { position: relative; width: 100%; max-width: 1600px; margin: 0 auto 16px; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 10px #0002; scroll-margin-top: 64px }
+.sw > section { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; transform: scale(var(--s, .5)) }
+h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
+.cover-img { z-index: -1 }
+section { isolation: isolate }
+footer { max-width: 1600px; margin: 0 auto; padding: 8px 4px 28px; font: 14px/1.4 'Inter', Arial, sans-serif; color: #364254 }
+/* deck */
+:root {
+  --navy: #14233A;
+  --ink: #1C2B40;
+  --body: #364254;
+  --muted: #535F71;
+  --paper: #F5F7FA;
+  --alt: #E7EDF4;
+  --card: #FDFDFE;
+  --chip: #DCE3EC;
+  --blue: #1D66AB;
+  --bluepale: #DCE9F6;
+  --red: #BF3626;
+  --redpale: #F8E1DD;
+  --ondark: #F1F5FA;
+  --ondark2: #BCC9DA;
+  --darkbox: #22385A;
+  --sky: #86BDEC;
+}
+
+body { font-family: 'Inter', Arial, sans-serif; color: var(--body); }
+
+section { background: var(--paper); color: var(--body); font-size: 30px; padding: 88px 128px; display: flex; flex-direction: column; gap: 36px; }
+section.alt { background: var(--alt); }
+section.dark { background: var(--navy); color: var(--ondark2); }
+
+h1 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 116px; font-weight: 700; line-height: 0.98; color: var(--navy); }
+h2 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 68px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+h3 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; color: var(--navy); }
+section.dark h2 { color: var(--ondark); }
+
+/* text */
+.lead { font-size: 34px; line-height: 1.35; color: var(--ink); }
+.txt { font-size: 30px; line-height: 1.38; color: var(--body); }
+.small { font-size: 26px; line-height: 1.35; color: var(--muted); }
+.cap { font-size: 26px; line-height: 1.3; color: var(--muted); text-align: center; }
+.list { font-size: 30px; line-height: 1.4; color: var(--body); padding-left: 1.1em; }
+.list-s { font-size: 34px; line-height: 1.4; color: var(--body); padding-left: 1.1em; }
+
+/* header of content slides */
+.head { display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.htext { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 24px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); }
+.eyebrow-d { font-size: 24px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--sky); }
+.pill { font-size: 24px; font-weight: 700; line-height: 1.2; padding: 8px 20px; border-radius: 256px; background: var(--chip); color: var(--muted); }
+.pill.on { background: var(--navy); color: var(--ondark); }
+
+/* layout */
+.row { display: flex; flex-direction: row; gap: 48px; }
+.col { display: flex; flex-direction: column; gap: 24px; }
+.fig { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+/* boxes */
+.box { background: var(--card); border-left: 6px solid var(--blue); border-radius: 12px; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px; }
+.stmt { background: var(--navy); border-radius: 16px; padding: 28px 34px; display: flex; flex-direction: column; gap: 8px; }
+.stmt.red { background: var(--red); }
+.stmt-t { font-size: 40px; font-weight: 800; line-height: 1.3; color: var(--ondark); }
+.stmt-s { font-size: 32px; line-height: 1.35; color: var(--ondark); }
+
+/* numbered rows */
+.nrow { display: flex; flex-direction: row; gap: 26px; align-items: center; }
+.num { width: 64px; height: 64px; border-radius: 256px; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+.num-t { font-size: 30px; font-weight: 800; line-height: 1; color: var(--ondark); }
+.dtxt { font-size: 38px; line-height: 1.38; color: var(--ondark); }
+
+/* scoring cards */
+.gcard { flex: 1; background: var(--card); border-radius: 16px; padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 14px; border-top: 8px solid var(--blue); }
+.gcard.red { border-top-color: var(--red); }
+.gnum { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 64px; font-weight: 700; line-height: 1; color: var(--blue); }
+.gcard .gnum-r { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 64px; font-weight: 700; line-height: 1; color: var(--red); }
+
+/* symbol legend */
+.legend { display: flex; flex-direction: row; gap: 26px; justify-content: center; }
+.legi { display: flex; flex-direction: column; gap: 10px; align-items: center; width: 160px; }
+.legimg { width: 96px; height: 96px; object-fit: contain; border-radius: 12px; }
+.legt { font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--ink); text-align: center; }
+
+/* tables */
+.tbl { font-family: 'Inter', Arial, sans-serif; font-size: 36px; line-height: 1.3; color: var(--body); width: 100%; }
+.tr-h { background: var(--navy); }
+.th-c { color: var(--ondark); }
+.tr-b { background: var(--card); }
+
+/* cover */
+section.cover { background: #FFFFFF; justify-content: center; gap: 28px; padding: 96px 128px; }
+.cover-img { position: absolute; left: 930px; top: 0px; width: 990px; height: 1080px; object-fit: cover; }
+.cover-text { width: 780px; display: flex; flex-direction: column; gap: 28px; }
+.cover-lead { font-size: 38px; line-height: 1.3; color: var(--ink); }
+.cover-txt { font-size: 30px; line-height: 1.4; color: var(--body); }
+.cover-box { background: var(--bluepale); border-left: 6px solid var(--blue); border-radius: 12px; padding: 24px 30px; display: flex; flex-direction: column; gap: 6px; }
+.cover-boxt { font-size: 30px; line-height: 1.4; color: var(--ink); }
+.cover-date { position: absolute; left: 128px; bottom: 56px; width: 700px; font-size: 24px; color: var(--muted); }
+
+/* fixed slide */
+section.fixed { padding: 40px 56px 36px; gap: 18px; }
+.fx-title { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 50px; font-weight: 700; line-height: 1.0; color: var(--navy); }
+.fx-sub { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 50px; font-weight: 400; line-height: 1.0; color: var(--blue); }
+.fx-win { font-size: 28px; font-weight: 800; color: var(--navy); }
+.fx-row { display: flex; flex-direction: row; gap: 18px; align-items: center; padding: 10px 18px 10px 12px; background: var(--card); border-radius: 12px; }
+.fx-ico { width: 66px; height: 66px; object-fit: contain; border-radius: 8px; flex: none; }
+.fx-name { width: 290px; flex: none; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+.fx-what { flex: 1; font-size: 27px; line-height: 1.28; color: var(--body); }
+.fx-box { background: var(--card); border-radius: 12px; padding: 16px 22px; display: flex; flex-direction: column; gap: 6px; border-left: 6px solid var(--blue); }
+.fx-box.red { border-left-color: var(--red); }
+.fx-bt { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+.fx-bx { font-size: 26px; line-height: 1.3; color: var(--body); }
+
+</style>
+</head>
+<body>
+<div class="top"><a class="t" href="#n1">Smartphone Inc. · Resumen de reglas</a><nav><a href="#n1"><span>1</span>Portada</a><a href="#n2"><span>2</span>Resumen: cada ronda, 8 fases</a></nav></div>
+<main>
+<div class="sw" id="n1"><section id="cover" class="cover" data-transition="fade">
+<img class="cover-img" src="img/cover.jpg" alt="Ilustración de la portada del reglamento: un directivo con barba y gafas consulta una tableta">
+<div class="cover-text">
+<p class="eyebrow">Dirección Estratégica · UB</p>
+<h1>Smartphone<br>Inc.</h1>
+<p class="cover-lead"><b>Hoy cada pareja dirige una empresa de smartphones.</b></p>
+<p class="cover-txt">4 rondas para decidir <b>precio, producción, I+D y expansión</b>, compitiendo con otras 4 empresas por los mismos clientes.</p>
+<div class="cover-box">
+<p class="cover-boxt"><b>¿Quién gana?</b> La empresa con más dinero (puntos de victoria, PV) al acabar la ronda 4.</p>
+</div>
+</div>
+<p class="cover-date">Jueves 19 de noviembre de 2026</p>
+</section></div>
+<div class="sw" id="n2"><section id="fija" class="fixed" data-transition="fade">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:32px">
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center">
+<p class="fx-title">SMARTPHONE INC.</p>
+<p class="fx-sub">Cada ronda, 8 fases</p>
+<p class="pill on">4 rondas</p>
+</div>
+<p class="fx-win">Gana quien tenga más PV tras la ronda 4</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;flex:1">
+<div style="width:1220px;display:flex;flex-direction:column;gap:10px">
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase1.png" alt="Icono de la fase 1: dos plantillas">
+<p class="fx-name">1. Planificación</p>
+<p class="fx-what">En secreto, superponed las 2 plantillas (y las mejoras). Lo que queda visible, se activa.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase2.png" alt="Icono de la fase 2: precio">
+<p class="fx-name">2. Precio</p>
+<p class="fx-what">Empieza en 5. Cada −$ visible: −1. Cada +$ visible: +1.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase3.png" alt="Icono de la fase 3: producción">
+<p class="fx-name">3. Producción</p>
+<p class="fx-what">+1 producto por cada caja visible y cada casilla que tapa la otra plantilla. Mejoras boca abajo y fichas: +1.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase4.png" alt="Icono de la fase 4: mejorar la producción">
+<p class="fx-name">4. Mejora</p>
+<p class="fx-what">Símbolo naranja visible: coged 1 mejora. Si no, 1 ficha de producto. Sirven desde la ronda siguiente.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase5.png" alt="Icono de la fase 5: investigación">
+<p class="fx-name">5. Investigación</p>
+<p class="fx-what">1 progreso por engranaje visible. Al llegar al coste: tecnología. La primera empresa se lleva la patente.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase6.png" alt="Icono de la fase 6: logística">
+<p class="fx-name">6. Logística</p>
+<p class="fx-what">1 progreso por camión visible, en regiones conectadas a una oficina vuestra. Al llegar al coste: oficina.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase7.png" alt="Icono de la fase 7: venta">
+<p class="fx-name">7. Venta</p>
+<p class="fx-what">Solo donde tenéis oficina. De izquierda a derecha, 1 producto por comprador. Lo no vendido se pierde.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase8.png" alt="Icono de la fase 8: puntos de victoria">
+<p class="fx-name">8. Puntos</p>
+<p class="fx-what">Vendidos × vuestro precio + PV de las regiones donde más vendéis (empate: oficina más a la izquierda).</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<div class="fx-box">
+<p class="fx-bt">Plantillas</p>
+<p class="fx-bx">Paralelas o perpendiculares. Una tapa de 1 a 4 casillas de la otra. Reveladas, ya no se mueven.</p>
+<p class="fx-bx">Mejora: tapa 2 casillas, o boca abajo = +1 producto.</p>
+</div>
+<div class="fx-box red">
+<p class="fx-bt">Compradores</p>
+<p class="fx-bx"><b>Rojo:</b> compra si vuestro precio ≤ su número. <b>Lila:</b> compra si tenéis su tecnología. Sin saltaros ninguno.</p>
+</div>
+<div class="fx-box">
+<p class="fx-bt">Orden (fases 4 a 7)</p>
+<p class="fx-bx">Precio más bajo primero. Empate: menos PV.</p>
+</div>
+<div class="fx-box">
+<p class="fx-bt">Fin</p>
+<p class="fx-bx">Cada ronda: el precio vuelve a 5. Tras la ronda 4: PV + patentes. Empate: más tecnologías.</p>
+</div>
+</div>
+</div>
+</section></div>
+</main>
+<footer>Imágenes del juego: reglamento de <i>Smartphone Inc.</i> © Cosmodrome Games / Arcane Wonders. Resumen para una partida en clase a 4 rondas (el reglamento oficial son 5).</footer>
+<script>
+(function () {
+  function fit() {
+    document.querySelectorAll('.sw').forEach(function (s) { s.style.setProperty('--s', (s.clientWidth / 1920).toFixed(4)); });
+  }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
