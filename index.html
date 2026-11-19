@@ -11,16 +11,26 @@
 * { margin: 0; box-sizing: border-box }
 html, body { height: 100%; overflow: hidden }
 body { background: #0F1A2B; font: 32px/1.2 sans-serif }
-.top { position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 10; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 16px; background: #14233A; color: #F1F5FA; font: 700 17px 'Inter', Arial, sans-serif }
+button { font-family: 'Inter', Arial, sans-serif }
+.top { position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 10; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 16px; background: #14233A; color: #F1F5FA; font: 700 17px 'Inter', Arial, sans-serif }
 .top .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 .top .t small { font-weight: 400; font-size: 12px; color: #BCC9DA; margin-left: 10px }
-.top nav { display: flex; gap: 6px }
-.top button { font: 600 14px 'Inter', Arial, sans-serif; color: #F1F5FA; background: #22385A; border: 0; border-radius: 8px; padding: 8px 11px; cursor: pointer; white-space: nowrap }
-.top button span { color: #86BDEC; margin-right: 6px }
-.top button.on { background: #1D66AB }
-.top button.on span { color: #F1F5FA }
-.top .ctl { display: flex; gap: 6px; margin-left: 6px }
+.top button { font-size: 14px; font-weight: 600; color: #F1F5FA; background: #22385A; border: 0; border-radius: 8px; padding: 8px 11px; cursor: pointer; white-space: nowrap }
+.top .mbtn { display: flex; align-items: center; gap: 8px; max-width: 460px; background: #1D66AB }
+.top .mbtn .mlabel { overflow: hidden; text-overflow: ellipsis }
 .top .fsb { background: #F1F5FA; color: #14233A }
+.menu { position: fixed; top: 58px; right: 12px; z-index: 30; width: min(440px, 92vw); max-height: calc(100vh - 76px); overflow: auto; background: #14233A; border-radius: 12px; padding: 8px; box-shadow: 0 10px 30px #0008; display: none }
+.menu.open { display: block }
+.menu button { display: flex; width: 100%; gap: 12px; align-items: center; text-align: left; background: transparent; color: #F1F5FA; border: 0; border-radius: 8px; padding: 11px 12px; font-size: 16px; font-weight: 600; cursor: pointer }
+.menu button:hover { background: #22385A }
+.menu button.on { background: #1D66AB }
+.menu button .n { min-width: 1.4em; color: #86BDEC; font-weight: 800 }
+.menu button.on .n { color: #F1F5FA }
+.menu .hint { font: 13px/1.4 'Inter', Arial, sans-serif; color: #BCC9DA; padding: 8px 12px 6px }
+.fab { position: fixed; top: 14px; left: 14px; z-index: 25; display: none; font-size: 16px; font-weight: 700; color: #F1F5FA; background: rgba(20, 35, 58, .88); border: 0; border-radius: 10px; padding: 10px 14px; cursor: pointer; opacity: 0; transition: opacity .3s }
+body.fs .fab { display: block }
+body.fs.awake .fab, body.fs.menu-open .fab, body.fs .fab:focus-visible { opacity: 1 }
+body.fs .menu { top: 64px; left: 14px; right: auto }
 .stage { position: fixed; left: 0; right: 0; top: 52px; bottom: 0; display: flex; align-items: center; justify-content: center; cursor: pointer }
 body.fs .top { display: none }
 body.fs .stage { top: 0 }
@@ -30,7 +40,7 @@ body.fs .stage { top: 0 }
 h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
 .cover-img { z-index: -1 }
 section { isolation: isolate }
-@media (max-width: 1500px) { .top nav button { font-size: 0; padding: 8px 10px } .top nav button span { font-size: 14px; margin: 0 } .top .t small { display: none } }
+@media (max-width: 1100px) { .top .t small { display: none } .top .mbtn { max-width: 260px } }
 /* deck */
 :root {
   --navy: #14233A;
@@ -142,10 +152,12 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </head>
 <body>
 <div class="top"><p class="t">Smartphone Inc. · Resumen de reglas<small>Imágenes: reglamento © Cosmodrome Games / Arcane Wonders · Partida en clase a 4 rondas (el reglamento oficial son 5)</small></p>
-<nav><button type="button" data-i="0" title="Portada"><span>1</span>Portada</button><button type="button" data-i="1" title="Preparar tablero"><span>2</span>Preparar tablero</button><button type="button" data-i="2" title="Preparar empresa"><span>3</span>Preparar empresa</button><button type="button" data-i="3" title="Plantillas"><span>4</span>Plantillas</button><button type="button" data-i="4" title="Colocar mejoras"><span>5</span>Colocar mejoras</button><button type="button" data-i="5" title="Venta"><span>6</span>Venta</button><button type="button" data-i="6" title="Resumen: 8 fases"><span>7</span>Resumen: 8 fases</button></nav>
-<div class="ctl"><button type="button" class="prev" title="Anterior (←)">◀</button><button type="button" class="next" title="Siguiente (→)">▶</button><button type="button" class="fsb" title="Pantalla completa (F)">Pantalla completa</button></div></div>
+<button type="button" class="mbtn" title="Menú de slides (M)">☰ <span class="mlabel"></span></button>
+<button type="button" class="prev" title="Anterior (←)">◀</button><button type="button" class="next" title="Siguiente (→)">▶</button><button type="button" class="fsb" title="Pantalla completa (F)">Pantalla completa</button></div>
+<button type="button" class="fab" title="Menú de slides (M)">☰ Slides</button>
+<nav class="menu" aria-label="Slides"><button type="button" data-i="0"><span class="n">1</span>Portada</button><button type="button" data-i="1"><span class="n">2</span>Preparación: el tablero</button><button type="button" data-i="2"><span class="n">3</span>Preparación: cada empresa</button><button type="button" data-i="3"><span class="n">4</span>Cómo se superponen las plantillas</button><button type="button" data-i="4"><span class="n">5</span>Cómo se colocan las mejoras</button><button type="button" data-i="5"><span class="n">6</span>Cómo se vende</button><button type="button" data-i="6"><span class="n">7</span>Resumen: las 8 fases</button><p class="hint">Atajos: M abre este menú · 1–7 van directos a una slide · ← → pasan · F pantalla completa</p></nav>
 <main class="stage">
-<div class="sw" id="n1"><section id="cover" class="cover" data-transition="fade">
+<div class="sw" id="n1" data-title="Portada"><section id="cover" class="cover" data-transition="fade">
 <img class="cover-img" src="img/cover.jpg" alt="Ilustración de la portada del reglamento: un directivo con barba y gafas consulta una tableta">
 <div class="cover-text">
 <p class="eyebrow">Dirección Estratégica · UB</p>
@@ -158,7 +170,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 <p class="cover-date">Jueves 19 de noviembre de 2026</p>
 </section></div>
-<div class="sw" id="n2"><section id="preptablero" class="alt" data-transition="fade">
+<div class="sw" id="n2" data-title="Preparación: el tablero"><section id="preptablero" class="alt" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Preparación · 1 de 2</p>
@@ -183,7 +195,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </ol>
 </div>
 </section></div>
-<div class="sw" id="n3"><section id="prepempresa" data-transition="fade">
+<div class="sw" id="n3" data-title="Preparación: cada empresa"><section id="prepempresa" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Preparación · 2 de 2</p>
@@ -225,7 +237,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n4"><section id="superponer" class="alt" data-transition="fade">
+<div class="sw" id="n4" data-title="Cómo se superponen las plantillas"><section id="superponer" class="alt" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 1 · Planificación</p>
@@ -254,7 +266,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n5"><section id="colocar" class="alt" data-transition="fade">
+<div class="sw" id="n5" data-title="Cómo se colocan las mejoras"><section id="colocar" class="alt" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 1 · Planificación</p>
@@ -292,7 +304,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n6"><section id="venta" data-transition="fade">
+<div class="sw" id="n6" data-title="Cómo se vende"><section id="venta" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 7 · Venta</p>
@@ -341,7 +353,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n7"><section id="fija" class="fixed" data-transition="fade">
+<div class="sw" id="n7" data-title="Resumen: las 8 fases"><section id="fija" class="fixed" data-transition="fade">
 <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:32px">
 <div style="display:flex;flex-direction:row;gap:20px;align-items:center">
 <p class="fx-title">SMARTPHONE INC.</p>
@@ -418,9 +430,11 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 <script>
 (function () {
   var b = document.body, top = document.querySelector('.top'), stage = document.querySelector('.stage');
+  var menu = document.querySelector('.menu'), mbtn = document.querySelector('.mbtn'), fab = document.querySelector('.fab');
+  var label = document.querySelector('.mlabel');
   var slides = [].slice.call(document.querySelectorAll('.sw'));
-  var btns = [].slice.call(document.querySelectorAll('.top nav button'));
-  var cur = 0;
+  var items = [].slice.call(menu.querySelectorAll('button[data-i]'));
+  var cur = 0, idle;
   function fsEl() { return document.fullscreenElement || document.webkitFullscreenElement; }
   function isFs() { return !!fsEl() || (innerHeight >= screen.height - 1 && innerWidth >= screen.width - 1); }
   function fit() {
@@ -429,11 +443,14 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
     var s = Math.min(innerWidth / 1920, (innerHeight - h) / 1080);
     document.documentElement.style.setProperty('--s', s.toFixed(5));
   }
+  function isOpen() { return menu.classList.contains('open'); }
+  function openMenu(o) { menu.classList.toggle('open', o); b.classList.toggle('menu-open', o); }
   function go(i) {
     i = Math.max(0, Math.min(slides.length - 1, i));
-    slides[cur].classList.remove('on'); if (btns[cur]) btns[cur].classList.remove('on');
+    slides[cur].classList.remove('on'); items[cur].classList.remove('on');
     cur = i;
-    slides[cur].classList.add('on'); if (btns[cur]) btns[cur].classList.add('on');
+    slides[cur].classList.add('on'); items[cur].classList.add('on');
+    label.textContent = (cur + 1) + ' / ' + slides.length + ' · ' + slides[cur].getAttribute('data-title');
     if (history.replaceState) history.replaceState(null, '', '#n' + (cur + 1));
   }
   function toggleFs() {
@@ -442,21 +459,36 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
     else if (e.requestFullscreen) { e.requestFullscreen(); }
     else if (e.webkitRequestFullscreen) { e.webkitRequestFullscreen(); }
   }
-  btns.forEach(function (x) { x.addEventListener('click', function () { go(+x.getAttribute('data-i')); x.blur(); }); });
+  function wake() {
+    b.classList.add('awake'); clearTimeout(idle);
+    idle = setTimeout(function () { b.classList.remove('awake'); }, 2500);
+  }
+  function toggleMenu(ev) { ev.stopPropagation(); openMenu(!isOpen()); ev.currentTarget.blur(); }
+  mbtn.addEventListener('click', toggleMenu);
+  fab.addEventListener('click', toggleMenu);
+  items.forEach(function (x) { x.addEventListener('click', function (ev) { ev.stopPropagation(); go(+x.getAttribute('data-i')); openMenu(false); }); });
+  menu.addEventListener('click', function (ev) { ev.stopPropagation(); });
   document.querySelector('.prev').addEventListener('click', function (ev) { go(cur - 1); ev.currentTarget.blur(); });
   document.querySelector('.next').addEventListener('click', function (ev) { go(cur + 1); ev.currentTarget.blur(); });
-  document.querySelector('.fsb').addEventListener('click', function (ev) { toggleFs(); ev.currentTarget.blur(); });
-  stage.addEventListener('click', function (ev) { go(ev.clientX < innerWidth / 3 ? cur - 1 : cur + 1); });
+  document.querySelector('.fsb').addEventListener('click', function (ev) { openMenu(false); toggleFs(); ev.currentTarget.blur(); });
+  stage.addEventListener('click', function (ev) {
+    if (isOpen()) { openMenu(false); return; }
+    go(ev.clientX < innerWidth / 3 ? cur - 1 : cur + 1);
+  });
   addEventListener('keydown', function (ev) {
     var k = ev.key;
-    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') go(cur + 1);
-    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') go(cur - 1);
+    if (k === 'm' || k === 'M') openMenu(!isOpen());
+    else if (k === 'Escape') { if (!isOpen()) return; openMenu(false); }
+    else if (/^[1-9]$/.test(k) && +k <= slides.length) { go(+k - 1); openMenu(false); }
+    else if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { go(cur + 1); openMenu(false); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { go(cur - 1); openMenu(false); }
     else if (k === 'Home') go(0);
     else if (k === 'End') go(slides.length - 1);
     else if (k === 'f' || k === 'F') toggleFs();
     else return;
     ev.preventDefault();
   });
+  addEventListener('mousemove', wake);
   addEventListener('resize', fit);
   document.addEventListener('fullscreenchange', fit);
   document.addEventListener('webkitfullscreenchange', fit);
