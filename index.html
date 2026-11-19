@@ -30,7 +30,7 @@ body.fs .stage { top: 0 }
 h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
 .cover-img { z-index: -1 }
 section { isolation: isolate }
-@media (max-width: 1100px) { .top nav button { font-size: 0; padding: 8px 10px } .top nav button span { font-size: 14px; margin: 0 } .top .t small { display: none } }
+@media (max-width: 1500px) { .top nav button { font-size: 0; padding: 8px 10px } .top nav button span { font-size: 14px; margin: 0 } .top .t small { display: none } }
 /* deck */
 :root {
   --navy: #14233A;
@@ -142,7 +142,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </head>
 <body>
 <div class="top"><p class="t">Smartphone Inc. · Resumen de reglas<small>Imágenes: reglamento © Cosmodrome Games / Arcane Wonders · Partida en clase a 4 rondas (el reglamento oficial son 5)</small></p>
-<nav><button type="button" data-i="0" title="Portada"><span>1</span>Portada</button><button type="button" data-i="1" title="Plantillas"><span>2</span>Plantillas</button><button type="button" data-i="2" title="Mejoras"><span>3</span>Mejoras</button><button type="button" data-i="3" title="Colocar mejoras"><span>4</span>Colocar mejoras</button><button type="button" data-i="4" title="Resumen: 8 fases"><span>5</span>Resumen: 8 fases</button></nav>
+<nav><button type="button" data-i="0" title="Portada"><span>1</span>Portada</button><button type="button" data-i="1" title="Preparar tablero"><span>2</span>Preparar tablero</button><button type="button" data-i="2" title="Preparar empresa"><span>3</span>Preparar empresa</button><button type="button" data-i="3" title="Plantillas"><span>4</span>Plantillas</button><button type="button" data-i="4" title="Mejoras"><span>5</span>Mejoras</button><button type="button" data-i="5" title="Colocar mejoras"><span>6</span>Colocar mejoras</button><button type="button" data-i="6" title="Venta"><span>7</span>Venta</button><button type="button" data-i="7" title="Resumen: 8 fases"><span>8</span>Resumen: 8 fases</button></nav>
 <div class="ctl"><button type="button" class="prev" title="Anterior (←)">◀</button><button type="button" class="next" title="Siguiente (→)">▶</button><button type="button" class="fsb" title="Pantalla completa (F)">Pantalla completa</button></div></div>
 <main class="stage">
 <div class="sw" id="n1"><section id="cover" class="cover" data-transition="fade">
@@ -158,7 +158,74 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 <p class="cover-date">Jueves 19 de noviembre de 2026</p>
 </section></div>
-<div class="sw" id="n2"><section id="superponer" class="alt" data-transition="fade">
+<div class="sw" id="n2"><section id="preptablero" class="alt" data-transition="fade">
+<div class="head">
+<div class="htext">
+<p class="eyebrow">Preparación · 1 de 2</p>
+<h2>El tablero</h2>
+</div>
+</div>
+<div class="row" style="gap:40px;align-items:flex-start">
+<div class="fig" style="width:1000px">
+<img src="img/prep_tablero.jpg" alt="Ilustración del reglamento con la preparación del tablero, numerada del 1 al 9" style="width:1000px;height:573px;object-fit:contain;border-radius:12px">
+<p class="cap">Los números coinciden con la lista</p>
+</div>
+<ol class="list-s" style="flex:1;font-size:28px;line-height:1.32">
+<li>Tablero en el centro de la mesa.</li>
+<li>Marcador de fase en la primera casilla de las fases.</li>
+<li>Marcador de ronda en la «I».</li>
+<li>Marcador de PV al lado del tablero.</li>
+<li>Minoristas: solo si hay <b>menos de 5 empresas</b>.</li>
+<li>Patentes en su casilla (guiaos por el símbolo de tecnología).</li>
+<li>Tecnologías al lado de su patente, por el anverso.</li>
+<li>Mejoras: barajadas, <b>5 boca arriba</b> en su zona y el resto en una pila boca abajo.</li>
+<li>Fichas de producto: en una pila boca abajo.</li>
+</ol>
+</div>
+</section></div>
+<div class="sw" id="n3"><section id="prepempresa" data-transition="fade">
+<div class="head">
+<div class="htext">
+<p class="eyebrow">Preparación · 2 de 2</p>
+<h2>Cada empresa (cada pareja)</h2>
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:860px;gap:22px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="lead">Elegid un <b>color</b> y coged sus piezas: 12 marcadores de progreso, 18 oficinas, 20 cubos de producto y el organizador.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="lead"><b>2 plantillas</b> (una con cada símbolo de la esquina) y la <b>pantalla</b> de vuestro color.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="lead">Según la pantalla: 1 <b>oficina</b> en la primera casilla de vuestra región de inicio, 1 cubo en el <b>marcador de PV</b> (casilla de vuestro color) y vuestra <b>mejora</b> inicial.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="lead">1 cubo en el <b>precio 5</b>, en el mismo orden que en el marcador de PV.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:20px">
+<div class="fig">
+<img src="img/prep_pantalla.png" alt="Pantalla de una empresa: nombre, región de inicio, PV iniciales y la mejora inicial" style="width:500px;height:164px;object-fit:contain">
+<p class="cap">La pantalla: región de inicio, PV iniciales y mejora inicial</p>
+</div>
+<div class="fig">
+<img src="img/prep_colocar.png" alt="Ilustración del reglamento: una oficina en la región de inicio, la mejora inicial y un cubo en el marcador de PV" style="width:700px;height:162px;object-fit:contain">
+<p class="cap">Oficina, mejora inicial y cubo en el marcador de PV</p>
+</div>
+<div class="fig">
+<img src="img/prep_precio.png" alt="Cinco cubos de colores en la casilla 5 de la zona de precios" style="width:340px;height:155px;object-fit:contain">
+<p class="cap">Todas las empresas empiezan con precio 5</p>
+</div>
+</div>
+</div>
+</section></div>
+<div class="sw" id="n4"><section id="superponer" class="alt" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 1 · Planificación</p>
@@ -187,7 +254,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n3"><section id="mejoras" data-transition="fade">
+<div class="sw" id="n5"><section id="mejoras" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 4 · Mejora</p>
@@ -219,7 +286,7 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n4"><section id="colocar" class="alt" data-transition="fade">
+<div class="sw" id="n6"><section id="colocar" class="alt" data-transition="fade">
 <div class="head">
 <div class="htext">
 <p class="eyebrow">Fase 1 · Planificación</p>
@@ -257,7 +324,56 @@ section.fixed { padding: 40px 56px 36px; gap: 18px; }
 </div>
 </div>
 </section></div>
-<div class="sw" id="n5"><section id="fija" class="fixed" data-transition="fade">
+<div class="sw" id="n7"><section id="venta" data-transition="fade">
+<div class="head">
+<div class="htext">
+<p class="eyebrow">Fase 7 · Venta</p>
+<h2>Cómo se vende</h2>
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:900px;gap:22px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="lead">Por <b>orden de precio</b>: primero el más bajo (empate: menos PV).</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="lead">Solo en regiones donde tenéis <b>oficina</b>.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="lead"><b>1 producto por comprador</b>, de izquierda a derecha, en todos los que os compran. Los demás se saltan.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:20px">
+<div class="box" style="flex:1;border-left-color:#BF3626">
+<h3>Comprador rojo</h3>
+<p class="txt">Compra si vuestro precio es <b>igual o menor</b> que su número.</p>
+</div>
+<div class="box" style="flex:1;border-left-color:#7B5EA7">
+<h3>Comprador lila</h3>
+<p class="txt">Compra a vuestro precio si tenéis <b>su tecnología</b>.</p>
+</div>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="lead">Lo que no vendéis <b>se pierde</b>.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:24px">
+<div class="fig">
+<img src="img/venta_ejemplo.png" alt="Ejemplo del reglamento: una región con cuatro compradores (rojo 6, Gamepad, NFC y 4G) y tres productos vendidos; el comprador NFC se queda vacío" style="width:620px;height:314px;object-fit:contain">
+<p class="cap">Precio 3, con las tecnologías Gamepad y 4G: compran el rojo, el Gamepad y el 4G. El NFC se salta y sobra 1 producto, que se pierde.</p>
+</div>
+<div class="box">
+<h3>Y en la fase 8</h3>
+<p class="txt">Cada producto vendido = <b>vuestro precio en PV</b>. Quien más vende en una región gana <b>PV extra</b> (en algunas, también el segundo).</p>
+<p class="txt"><b>Empate en ventas:</b> gana quien tiene la oficina <b>más a la izquierda</b>.</p>
+</div>
+</div>
+</div>
+</section></div>
+<div class="sw" id="n8"><section id="fija" class="fixed" data-transition="fade">
 <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:32px">
 <div style="display:flex;flex-direction:row;gap:20px;align-items:center">
 <p class="fx-title">SMARTPHONE INC.</p>
