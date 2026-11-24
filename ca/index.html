@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smartphone Inc. · Com es juga</title>
+<meta name="description" content="Smartphone Inc.: com es juga, per a la partida a classe (4 rondes).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
+<style>
+* { margin: 0; box-sizing: border-box }
+html, body { height: 100%; overflow: hidden }
+body { background: #0F1A2B; font: 32px/1.2 sans-serif }
+button { font-family: 'Inter', Arial, sans-serif }
+.top { position: fixed; top: 0; left: 0; right: 0; height: 52px; z-index: 10; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 16px; background: #14233A; color: #F1F5FA; font: 700 17px 'Inter', Arial, sans-serif }
+.top .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.top .t small { font-weight: 400; font-size: 12px; color: #BCC9DA; margin-left: 10px }
+.top button, .top .lang { font-size: 14px; font-weight: 600; color: #F1F5FA; background: #22385A; border: 0; border-radius: 8px; padding: 8px 11px; cursor: pointer; white-space: nowrap; text-decoration: none; font-family: 'Inter', Arial, sans-serif }
+.top .mbtn { display: flex; align-items: center; gap: 8px; max-width: 460px; background: #1D66AB }
+.top .mbtn .mlabel { overflow: hidden; text-overflow: ellipsis }
+.top .fsb { background: #F1F5FA; color: #14233A }
+.menu { position: fixed; top: 58px; right: 12px; z-index: 30; width: min(440px, 92vw); max-height: calc(100vh - 76px); overflow: auto; background: #14233A; border-radius: 12px; padding: 8px; box-shadow: 0 10px 30px #0008; display: none }
+.menu.open { display: block }
+.menu button { display: flex; width: 100%; gap: 12px; align-items: center; text-align: left; background: transparent; color: #F1F5FA; border: 0; border-radius: 8px; padding: 11px 12px; font-size: 16px; font-weight: 600; cursor: pointer }
+.menu button:hover { background: #22385A }
+.menu button.on { background: #1D66AB }
+.menu button .n { min-width: 1.4em; color: #86BDEC; font-weight: 800 }
+.menu button.on .n { color: #F1F5FA }
+.menu .hint { font: 13px/1.4 'Inter', Arial, sans-serif; color: #BCC9DA; padding: 8px 12px 6px }
+.fab { position: fixed; top: 14px; left: 14px; z-index: 25; display: none; font-size: 16px; font-weight: 700; color: #F1F5FA; background: rgba(20, 35, 58, .88); border: 0; border-radius: 10px; padding: 10px 14px; cursor: pointer; opacity: 0; transition: opacity .3s }
+body.fs .fab { display: block }
+body.fs.awake .fab, body.fs.menu-open .fab, body.fs .fab:focus-visible { opacity: 1 }
+body.fs .menu { top: 64px; left: 14px; right: auto }
+.stage { position: fixed; left: 0; right: 0; top: 52px; bottom: 0; display: flex; align-items: center; justify-content: center; cursor: pointer }
+body.fs .top { display: none }
+body.fs .stage { top: 0 }
+.sw { display: none; position: relative; flex: none; overflow: hidden; width: calc(1920px * var(--s, .5)); height: calc(1080px * var(--s, .5)) }
+.sw.on { display: block }
+.sw > section { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; transform: scale(var(--s, .5)) }
+h1 { font-size: 96px; font-weight: 600 } h2 { font-size: 64px; font-weight: 600 } h3 { font-size: 44px; font-weight: 600 }
+.cover-img { z-index: -1 }
+section { isolation: isolate }
+@media (max-width: 1100px) { .top .t small { display: none } .top .mbtn { max-width: 260px } }
+/* deck */
+:root {
+  --navy: #14233A;
+  --ink: #1C2B40;
+  --body: #364254;
+  --muted: #535F71;
+  --paper: #F5F7FA;
+  --alt: #E7EDF4;
+  --card: #FDFDFE;
+  --chip: #DCE3EC;
+  --blue: #1D66AB;
+  --bluepale: #DCE9F6;
+  --red: #BF3626;
+  --redpale: #F8E1DD;
+  --ondark: #F1F5FA;
+  --ondark2: #BCC9DA;
+  --darkbox: #22385A;
+  --sky: #86BDEC;
+}
+
+body { font-family: 'Inter', Arial, sans-serif; color: var(--body); }
+
+section { background: var(--paper); color: var(--body); font-size: 30px; padding: 88px 128px; display: flex; flex-direction: column; gap: 36px; }
+section.alt { background: var(--alt); }
+section.dark { background: var(--navy); color: var(--ondark2); }
+
+h1 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 116px; font-weight: 700; line-height: 0.98; color: var(--navy); }
+h2 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 68px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+h3 { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; color: var(--navy); }
+section.dark h2 { color: var(--ondark); }
+
+/* text */
+.lead { font-size: 34px; line-height: 1.35; color: var(--ink); }
+.txt { font-size: 30px; line-height: 1.38; color: var(--body); }
+.small { font-size: 26px; line-height: 1.35; color: var(--muted); }
+.cap { font-size: 26px; line-height: 1.3; color: var(--muted); text-align: center; }
+.list { font-size: 30px; line-height: 1.4; color: var(--body); padding-left: 1.1em; }
+.list-s { font-size: 34px; line-height: 1.4; color: var(--body); padding-left: 1.1em; }
+
+/* header of content slides */
+.head { display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; gap: 40px; }
+.htext { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 24px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); }
+.eyebrow-d { font-size: 24px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--sky); }
+.pill { font-size: 24px; font-weight: 700; line-height: 1.2; padding: 8px 20px; border-radius: 256px; background: var(--chip); color: var(--muted); }
+.pill.on { background: var(--navy); color: var(--ondark); }
+
+/* layout */
+.row { display: flex; flex-direction: row; gap: 48px; }
+.col { display: flex; flex-direction: column; gap: 24px; }
+.fig { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+/* boxes */
+.box { background: var(--card); border-left: 6px solid var(--blue); border-radius: 12px; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px; }
+.stmt { background: var(--navy); border-radius: 16px; padding: 28px 34px; display: flex; flex-direction: column; gap: 8px; }
+.stmt.red { background: var(--red); }
+.stmt-t { font-size: 40px; font-weight: 800; line-height: 1.3; color: var(--ondark); }
+.stmt-s { font-size: 32px; line-height: 1.35; color: var(--ondark); }
+
+/* numbered rows */
+.nrow { display: flex; flex-direction: row; gap: 26px; align-items: center; }
+.num { width: 64px; height: 64px; border-radius: 256px; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+.num-t { font-size: 30px; font-weight: 800; line-height: 1; color: var(--ondark); }
+.dtxt { font-size: 38px; line-height: 1.38; color: var(--ondark); }
+
+/* scoring cards */
+.gcard { flex: 1; background: var(--card); border-radius: 16px; padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 14px; border-top: 8px solid var(--blue); }
+.gcard.red { border-top-color: var(--red); }
+.gnum { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 64px; font-weight: 700; line-height: 1; color: var(--blue); }
+.gcard .gnum-r { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 64px; font-weight: 700; line-height: 1; color: var(--red); }
+
+/* symbol legend */
+.legend { display: flex; flex-direction: row; gap: 26px; justify-content: center; }
+.legi { display: flex; flex-direction: column; gap: 10px; align-items: center; width: 160px; }
+.legimg { width: 96px; height: 96px; object-fit: contain; border-radius: 12px; }
+.legt { font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--ink); text-align: center; }
+
+/* tables */
+.tbl { font-family: 'Inter', Arial, sans-serif; font-size: 36px; line-height: 1.3; color: var(--body); width: 100%; }
+.tr-h { background: var(--navy); }
+.th-c { color: var(--ondark); }
+.tr-b { background: var(--card); }
+
+/* cover */
+section.cover { background: #FFFFFF; justify-content: center; gap: 28px; padding: 96px 128px; }
+.cover-img { position: absolute; left: 930px; top: 0px; width: 990px; height: 1080px; object-fit: cover; }
+.cover-text { width: 780px; display: flex; flex-direction: column; gap: 28px; }
+.cover-lead { font-size: 38px; line-height: 1.3; color: var(--ink); }
+.cover-txt { font-size: 30px; line-height: 1.4; color: var(--body); }
+.cover-box { background: var(--bluepale); border-left: 6px solid var(--blue); border-radius: 12px; padding: 24px 30px; display: flex; flex-direction: column; gap: 6px; }
+.cover-boxt { font-size: 30px; line-height: 1.4; color: var(--ink); }
+.cover-date { position: absolute; left: 128px; bottom: 56px; width: 700px; font-size: 24px; color: var(--muted); }
+
+/* fixed slide */
+section.fixed { padding: 40px 56px 36px; gap: 18px; }
+.fx-title { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 50px; font-weight: 700; line-height: 1.0; color: var(--navy); }
+.fx-sub { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 50px; font-weight: 400; line-height: 1.0; color: var(--blue); }
+.fx-win { font-size: 28px; font-weight: 800; color: var(--navy); }
+.fx-row { display: flex; flex-direction: row; gap: 18px; align-items: center; padding: 10px 18px 10px 12px; background: var(--card); border-radius: 12px; }
+.fx-ico { width: 66px; height: 66px; object-fit: contain; border-radius: 8px; flex: none; }
+.fx-name { width: 290px; flex: none; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+.fx-what { flex: 1; font-size: 27px; line-height: 1.28; color: var(--body); }
+.fx-box { background: var(--card); border-radius: 12px; padding: 16px 22px; display: flex; flex-direction: column; gap: 6px; border-left: 6px solid var(--blue); }
+.fx-box.red { border-left-color: var(--red); }
+.fx-bt { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+.fx-bx { font-size: 26px; line-height: 1.3; color: var(--body); }
+
+/* ronda 1: cabecera con icono de fase y tira de fases */
+.ph { display: flex; flex-direction: row; gap: 24px; align-items: center; }
+.ph-ico { width: 96px; height: 96px; object-fit: contain; border-radius: 14px; flex: none; }
+.strip { display: flex; flex-direction: row; gap: 10px; align-items: center; }
+.st-i { width: 52px; height: 52px; object-fit: contain; border-radius: 8px; opacity: 0.25; }
+.st-on { width: 84px; height: 84px; object-fit: contain; border-radius: 10px; box-shadow: 0 0 0 5px #1D66AB; }
+.spacer { flex: 1; }
+.next { align-self: flex-start; font-size: 26px; font-weight: 700; line-height: 1.2; padding: 12px 26px; border-radius: 256px; background: var(--navy); color: var(--ondark); }
+.order { align-self: flex-start; font-size: 26px; font-weight: 700; line-height: 1.2; padding: 10px 22px; border-radius: 256px; background: var(--redpale); color: #8E2618; }
+.plus { width: 76px; flex: none; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; line-height: 1; color: var(--blue); }
+
+/* montar la mesa: ilustración a sangre con llamadas */
+section.bleed { padding: 0; background: #C6649B; }
+.bleed-img { position: absolute; left: 0px; top: 0px; width: 1920px; height: 1080px; object-fit: cover; }
+.cl { position: absolute; box-sizing: border-box; background: var(--navy); border-radius: 14px; padding: 16px 22px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.clr { display: flex; flex-direction: row; gap: 16px; align-items: center; }
+.cln { width: 48px; height: 48px; border-radius: 256px; background: var(--ondark); display: flex; align-items: center; justify-content: center; flex: none; }
+.cln-t { font-size: 26px; font-weight: 800; line-height: 1; color: var(--navy); }
+.clt { font-size: 26px; line-height: 1.25; color: var(--ondark); }
+.cl-title { position: absolute; box-sizing: border-box; background: var(--paper); border-radius: 16px; padding: 14px 28px; display: flex; flex-direction: column; gap: 4px; }
+.cl-h { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 52px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+
+/* montar la mesa: el kit de cada empresa */
+.kit { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+.kcard { background: var(--card); border-radius: 14px; padding: 16px 14px 18px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.kcard-d { background: var(--navy); border-radius: 14px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.kimg { width: 196px; height: 124px; object-fit: contain; }
+.kl { font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--ink); text-align: center; }
+.kd { font-size: 24px; line-height: 1.25; color: var(--muted); text-align: center; }
+.kdd { font-size: 26px; line-height: 1.3; color: var(--ondark); }
+
+/* objetivo y decisiones */
+.ways { display: flex; flex-direction: row; gap: 20px; }
+.way { flex: 1; background: var(--card); border-radius: 14px; padding: 14px 20px; display: flex; flex-direction: row; gap: 18px; align-items: center; border-top: 6px solid var(--red); }
+.way-img { width: 132px; height: 96px; object-fit: contain; flex: none; }
+.dgrid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.dcard { background: var(--card); border-radius: 14px; padding: 14px 20px; display: flex; flex-direction: row; gap: 18px; align-items: center; }
+.dico { width: 84px; height: 84px; object-fit: contain; border-radius: 12px; flex: none; }
+.dname { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 32px; font-weight: 700; line-height: 1.05; color: var(--navy); }
+.dx { font-size: 26px; line-height: 1.28; color: var(--body); }
+
+/* ronda 1: portadilla */
+.tl { display: flex; flex-direction: row; gap: 12px; }
+.tl-i { flex: 1; background: var(--darkbox); border-radius: 14px; padding: 18px 4px 16px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.tl-img { width: 104px; height: 104px; object-fit: contain; border-radius: 12px; }
+.tl-n { font-size: 24px; font-weight: 800; line-height: 1.1; color: var(--sky); }
+.tl-t { font-size: 24px; font-weight: 600; line-height: 1.15; color: var(--ondark); text-align: center; }
+.dbox { flex: 1; background: var(--darkbox); border-radius: 14px; padding: 24px 30px; display: flex; flex-direction: column; gap: 8px; border-left: 6px solid var(--sky); }
+.dtx { font-size: 32px; line-height: 1.35; color: var(--ondark); }
+
+/* esquema con etiquetas sobre una ilustración */
+.diag { position: relative; background: #FFFFFF; border-radius: 14px; }
+.lab { position: absolute; box-sizing: border-box; background: #FFFFFF; display: flex; flex-direction: column; justify-content: center; }
+.lab-t { font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--navy); }
+
+</style>
+</head>
+<body>
+<div class="top"><p class="t">Smartphone Inc. · Com es juga<small>Imatges: reglament © Cosmodrome Games / Arcane Wonders · Partida a classe a 4 rondes (el reglament oficial en diu 5)</small></p>
+<a class="lang" href="../" title="Versión en castellano">Castellano</a>
+<button type="button" class="mbtn" title="Menú de slides (M)">☰ <span class="mlabel"></span></button>
+<button type="button" class="prev" title="Anterior (←)">◀</button><button type="button" class="next" title="Següent (→)">▶</button><button type="button" class="fsb" title="Pantalla completa (F)">Pantalla completa</button></div>
+<button type="button" class="fab" title="Menú de slides (M)">☰ Slides</button>
+<nav class="menu" aria-label="Slides"><button type="button" data-i="0"><span class="n">1</span>Portada</button><button type="button" data-i="1"><span class="n">2</span>Muntar la taula: el tauler</button><button type="button" data-i="2"><span class="n">3</span>Muntar la taula: la vostra empresa</button><button type="button" data-i="3"><span class="n">4</span>Objectiu i què decidiu</button><button type="button" data-i="4"><span class="n">5</span>Ronda 1: tots junts</button><button type="button" data-i="5"><span class="n">6</span>Fase 1: planificació</button><button type="button" data-i="6"><span class="n">7</span>Fase 1: la vostra millora</button><button type="button" data-i="7"><span class="n">8</span>Fase 2: preu</button><button type="button" data-i="8"><span class="n">9</span>Fase 3: producció</button><button type="button" data-i="9"><span class="n">10</span>Fase 4: millora</button><button type="button" data-i="10"><span class="n">11</span>Fase 5: investigació</button><button type="button" data-i="11"><span class="n">12</span>Fase 6: logística</button><button type="button" data-i="12"><span class="n">13</span>Fase 7: venda</button><button type="button" data-i="13"><span class="n">14</span>Fase 8: punts</button><button type="button" data-i="14"><span class="n">15</span>Rondes 2 a 4: resum</button><p class="hint">Dreceres: M obre aquest menú · 1–9 van directament a una slide · ← → passen · F pantalla completa</p></nav>
+<main class="stage">
+<div class="sw" id="n1" data-title="Portada"><section id="cover" class="cover" data-transition="fade">
+<img class="cover-img" src="img/cover.jpg" alt="Il·lustració de la portada del reglament: un directiu amb barba i ulleres consulta una tauleta">
+<div class="cover-text">
+<p class="eyebrow">Joc de simulació · UB</p>
+<h1>Smartphone<br>Inc.</h1>
+<p class="cover-lead"><b>Avui cada parella dirigeix una empresa de smartphones.</b></p>
+<p class="cover-txt">4 rondes per decidir <b>preu, producció, R+D i expansió</b>, competint amb 4 empreses més pels mateixos clients.</p>
+<div class="cover-box">
+<p class="cover-boxt"><b>Qui guanya?</b> L’empresa amb més diners (punts de victòria, PV) en acabar la ronda 4.</p>
+</div>
+</div>
+<p class="cover-date">Avui: muntar la taula · objectiu · ronda 1 junts · rondes 2 a 4 sols</p>
+</section></div>
+<div class="sw" id="n2" data-title="Muntar la taula: el tauler"><section id="mesa" class="bleed" data-transition="fade">
+<img class="bleed-img" src="img/prep_tablero.jpg" alt="Il·lustració del reglament: el tauler preparat per començar, amb els passos numerats de l’1 al 9">
+<div class="cl-title" style="left:600px;top:66px;width:560px;height:118px">
+<p class="eyebrow">Muntar la taula · 1 de 2</p>
+<p class="cl-h">El tauler</p>
+</div>
+<div class="cl" style="left:56px;top:80px;width:448px;height:290px">
+<div class="clr"><div class="cln"><p class="cln-t">1</p></div><p class="clt">Tauler al centre de la taula.</p></div>
+<div class="clr"><div class="cln"><p class="cln-t">2</p></div><p class="clt">Marcador de <b>fase</b> a la casella 1.</p></div>
+<div class="clr"><div class="cln"><p class="cln-t">3</p></div><p class="clt">Marcador de <b>ronda</b> a la «I».</p></div>
+</div>
+<div class="cl" style="left:56px;top:676px;width:448px;height:112px">
+<div class="clr"><div class="cln"><p class="cln-t">4</p></div><p class="clt">Marcador de <b>PV</b> al costat del tauler.</p></div>
+</div>
+<div class="cl" style="left:544px;top:522px;width:440px;height:134px">
+<div class="clr"><div class="cln"><p class="cln-t">5</p></div><p class="clt"><b>Minoristes: no.</b> Amb 5 empreses per taula no se’n posen.</p></div>
+</div>
+<div class="cl" style="left:740px;top:960px;width:440px;height:120px">
+<div class="clr"><div class="cln"><p class="cln-t">6</p></div><p class="clt"><b>Patents</b> a la seva casella (mireu el símbol).</p></div>
+</div>
+<div class="cl" style="left:1424px;top:718px;width:444px;height:294px">
+<div class="clr"><div class="cln"><p class="cln-t">7</p></div><p class="clt"><b>Tecnologies</b> al costat de la seva patent, per la cara «Front».</p></div>
+<img src="img/comp_tecnologias.png" alt="Cartes de tecnologia" style="width:300px;height:150px;object-fit:contain;align-self:center;border-radius:10px">
+</div>
+<div class="cl" style="left:1094px;top:272px;width:444px;height:230px">
+<div class="clr"><div class="cln"><p class="cln-t">8</p></div><p class="clt"><b>Millores</b> barrejades: <b>5 cara amunt</b> al seu bloc i la resta en una pila cara avall.</p></div>
+</div>
+<div class="cl" style="left:1210px;top:28px;width:440px;height:112px">
+<div class="clr"><div class="cln"><p class="cln-t">9</p></div><p class="clt"><b>Fitxes de producte</b> en una pila, cara avall.</p></div>
+</div>
+</section></div>
+<div class="sw" id="n3" data-title="Muntar la taula: la vostra empresa"><section id="empresa" data-transition="fade">
+<div class="head">
+<div class="htext">
+<p class="eyebrow">Muntar la taula · 2 de 2</p>
+<h2>La vostra empresa (cada parella)</h2>
+</div>
+</div>
+<div class="row" style="gap:44px;align-items:flex-start">
+<div class="kit" style="width:980px">
+<div class="kcard">
+<img class="kimg" src="img/comp_plantillas.png" alt="Dues plantilles de planificació">
+<p class="kl"><span style="color:#1D66AB">2</span> plantilles</p>
+<p class="kd">una amb cada símbol a la cantonada</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_pantallas.png" alt="Pantalles de les empreses">
+<p class="kl"><span style="color:#1D66AB">1</span> pantalla</p>
+<p class="kd">la del vostre color</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_mejoras_iniciales.png" alt="Millores inicials de cada empresa">
+<p class="kl"><span style="color:#1D66AB">1</span> millora inicial</p>
+<p class="kd">la del vostre color</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_organizador.png" alt="Organitzador">
+<p class="kl"><span style="color:#1D66AB">1</span> organitzador</p>
+<p class="kd">per guardar les peces</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_progreso.png" alt="Marcadors de progrés">
+<p class="kl"><span style="color:#1D66AB">12</span> progressos</p>
+<p class="kd">per investigar i expandir-vos</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_oficinas.png" alt="Oficines">
+<p class="kl"><span style="color:#1D66AB">18</span> oficines</p>
+<p class="kd">marquen regions i tecnologies aconseguides</p>
+</div>
+<div class="kcard">
+<img class="kimg" src="img/comp_cubos.png" alt="Cubs de producte">
+<p class="kl"><span style="color:#1D66AB">20</span> cubs</p>
+<p class="kd">els productes que fabriqueu i veneu</p>
+</div>
+<div class="kcard-d">
+<p class="kdd"><b>Tot del color de la vostra empresa.</b></p>
+<p class="kdd">Progressos, oficines i cubs, a l’organitzador.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:18px">
+<h3>Col·loqueu el que diu la vostra pantalla</h3>
+<img src="img/prep_pantalla.png" alt="Pantalla d’una empresa: nom, regió d’inici, PV inicials i millora inicial" style="width:600px;height:197px;object-fit:contain">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="txt">1 <b>oficina</b> a la primera casella de la vostra regió d’inici.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="txt">1 <b>cub</b> al marcador de PV, a la vostra casella.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="txt">1 <b>cub</b> al <b>preu 5</b> del tauler.</p>
+</div>
+<img src="img/prep_colocar.png" alt="Il·lustració del reglament: una oficina a la regió d’inici, la millora inicial i un cub al marcador de PV" style="width:600px;height:139px;object-fit:contain">
+</div>
+</div>
+</section></div>
+<div class="sw" id="n4" data-title="Objectiu i què decidiu"><section id="objetivo" class="alt" data-transition="fade" style="padding:72px 128px;gap:30px">
+<div class="head">
+<div class="htext">
+<p class="eyebrow">Abans de jugar</p>
+<h2>Objectiu: més PV que ningú en 4 rondes</h2>
+</div>
+</div>
+<div class="ways">
+<div class="way">
+<img class="way-img" src="img/comp_cubos.png" alt="Cubs de producte">
+<div class="col" style="gap:6px">
+<p class="dname">Vendre</p>
+<p class="dx">Cada producte venut = el vostre preu en PV.</p>
+</div>
+</div>
+<div class="way">
+<img class="way-img" src="img/control_region.png" alt="Una regió del tauler amb oficines i productes venuts">
+<div class="col" style="gap:6px">
+<p class="dname">Dominar regions</p>
+<p class="dx">Qui més ven en una regió, PV extra.</p>
+</div>
+</div>
+<div class="way">
+<img class="way-img" src="img/comp_patentes.png" alt="Fitxes de patent">
+<div class="col" style="gap:6px">
+<p class="dname">Patents</p>
+<p class="dx">Per a la primera empresa amb cada tecnologia.</p>
+</div>
+</div>
+</div>
+<div class="col" style="gap:14px">
+<p class="lead">En planificar decidiu quant de cada cosa. Cada <b>símbol visible</b> a les vostres plantilles serveix per:</p>
+<div class="dgrid">
+<div class="dcard">
+<img class="dico" src="img/sim_menos.png" alt="Símbol de baixar el preu">
+<div class="col" style="gap:6px">
+<p class="dname">Baixar preu</p>
+<p class="dx">Us compren més i jugueu abans. Però cada venda dona menys PV.</p>
+</div>
+</div>
+<div class="dcard">
+<img class="dico" src="img/sim_mas.png" alt="Símbol de pujar el preu">
+<div class="col" style="gap:6px">
+<p class="dname">Pujar preu</p>
+<p class="dx">Cada venda dona més PV. Però us compren menys i jugueu després.</p>
+</div>
+</div>
+<div class="dcard">
+<img class="dico" src="img/fase3.png" alt="Símbol de producció">
+<div class="col" style="gap:6px">
+<p class="dname">Produir</p>
+<p class="dx">Més productes per vendre. El que no es ven, es perd.</p>
+</div>
+</div>
+<div class="dcard">
+<img class="dico" src="img/sim_mejora.png" alt="Símbol de millora">
+<div class="col" style="gap:6px">
+<p class="dname">Millorar</p>
+<p class="dx">Una millora per a les plantilles de les properes rondes.</p>
+</div>
+</div>
+<div class="dcard">
+<img class="dico" src="img/fase5.png" alt="Símbol d’investigació">
+<div class="col" style="gap:6px">
+<p class="dname">Investigar</p>
+<p class="dx">Tecnologies: obren compradors i donen avantatges.</p>
+</div>
+</div>
+<div class="dcard">
+<img class="dico" src="img/fase6.png" alt="Símbol de logística">
+<div class="col" style="gap:6px">
+<p class="dname">Expandir-se</p>
+<p class="dx">Oficines en regions noves: més clients.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="stmt">
+<p class="stmt-s"><b>No es pot fer tot:</b> el que tapeu no s’activa, però cada casella tapada dona +1 producte.</p>
+</div>
+</section></div>
+<div class="sw" id="n5" data-title="Ronda 1: tots junts"><section id="ronda1" class="dark" data-transition="fade" style="justify-content:center;gap:44px">
+<div class="htext">
+<p class="eyebrow-d">Ronda 1</p>
+<h2>La juguem tots junts, fase a fase</h2>
+</div>
+<div class="tl">
+<div class="tl-i"><img class="tl-img" src="img/fase1.png" alt="Icona de la fase 1"><p class="tl-n">1</p><p class="tl-t">Planificació</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase2.png" alt="Icona de la fase 2"><p class="tl-n">2</p><p class="tl-t">Preu</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase3.png" alt="Icona de la fase 3"><p class="tl-n">3</p><p class="tl-t">Producció</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase4.png" alt="Icona de la fase 4"><p class="tl-n">4</p><p class="tl-t">Millora</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase5.png" alt="Icona de la fase 5"><p class="tl-n">5</p><p class="tl-t">Investigació</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase6.png" alt="Icona de la fase 6"><p class="tl-n">6</p><p class="tl-t">Logística</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase7.png" alt="Icona de la fase 7"><p class="tl-n">7</p><p class="tl-t">Venda</p></div>
+<div class="tl-i"><img class="tl-img" src="img/fase8.png" alt="Icona de la fase 8"><p class="tl-n">8</p><p class="tl-t">Punts</p></div>
+</div>
+<div class="row" style="gap:24px">
+<div class="dbox">
+<p class="dtx"><b>Cap taula no passa de fase</b> fins que totes han acabat.</p>
+</div>
+<div class="dbox">
+<p class="dtx"><b>Des de la fase 4, per ordre de preu:</b> el més barat juga primer. Empat: el que té menys PV.</p>
+</div>
+</div>
+<p class="dtx" style="color:#BCC9DA">Les fases també són al tauler, d’esquerra a dreta. Després, les rondes 2 a 4 les jugueu sols.</p>
+</section></div>
+<div class="sw" id="n6" data-title="Fase 1: planificació"><section id="planificar" class="alt" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase1.png" alt="Icona de la fase 1">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 1 de 8</p>
+<h2>Planificació</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-on" src="img/fase1.png" alt="Fase 1, l’actual">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="row" style="gap:44px;align-items:flex-start">
+<div class="col" style="width:880px;gap:24px">
+<div class="fig">
+<img src="img/plantillas_paralelas2.png" alt="Exemples del reglament: dues plantilles paral·leles o perpendiculars (correcte) i una plantilla torçada (incorrecte)" style="width:880px;height:234px;object-fit:contain">
+<p class="cap">Paral·leles o perpendiculars: sí. Torçades: no.</p>
+</div>
+<div class="fig">
+<img src="img/plantillas_tapadas.png" alt="Quatre exemples del reglament: una plantilla tapa 1, 2, 3 o 4 caselles de l’altra" style="width:880px;height:260px;object-fit:contain">
+<p class="cap">Una plantilla tapa d’1 a 4 caselles de l’altra</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:22px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="txt"><b>Darrere la pantalla</b>, en secret.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="txt">Una plantilla <b>a sobre</b> de l’altra, per la cara que vulgueu.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="txt"><b>Paral·leles o perpendiculars</b>. Una tapa <b>d’1 a 4 caselles</b> de l’altra.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="txt">El que és <b>visible s’activa</b>. Cada casella tapada = <b>+1 producte</b>.</p>
+</div>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Abans d’aixecar la pantalla: col·loqueu la millora inicial →</p>
+</section></div>
+<div class="sw" id="n7" data-title="Fase 1: la vostra millora"><section id="colocar" class="alt" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase1.png" alt="Icona de la fase 1">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 1 de 8</p>
+<h2>La vostra millora</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-on" src="img/fase1.png" alt="Fase 1, l’actual">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:900px;gap:30px">
+<div class="fig">
+<img src="img/mejoras_colocar.png" alt="Quatre exemples del reglament de la mateixa millora col·locada sobre una plantilla, tapant dues caselles" style="width:900px;height:211px;object-fit:contain">
+<p class="cap">La mateixa millora, ben col·locada de 4 maneres</p>
+</div>
+<div class="fig">
+<img src="img/mejora_no_produce.png" alt="Exemple del reglament: una millora sobre les plantilles i els productes que es fabriquen" style="width:440px;height:257px;object-fit:contain">
+<p class="cap">Les caselles que tapa una millora no produeixen</p>
+</div>
+</div>
+<div class="col" style="flex:1">
+<div class="box">
+<h3>Sobre la plantilla</h3>
+<ul class="list">
+<li>Cara amunt, tapant <b>2 caselles</b>, sense sortir de la vora.</li>
+<li>El que tapa queda <b>inactiu</b> i no produeix.</li>
+<li>Es poden encavalcar, però una no en tapa del tot una altra.</li>
+<li>L’altra plantilla pot tapar la millora.</li>
+</ul>
+</div>
+<div class="box" style="border-left-color:#BF3626">
+<h3>O cara avall</h3>
+<ul class="list">
+<li>Davant vostre: <b>+1 producte</b> a la fase 3.</li>
+<li>Les fitxes de producte mai no van a la plantilla: +1 producte cadascuna.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les empreses estiguin a punt: fora pantalles! → Fase 2: Preu</p>
+</section></div>
+<div class="sw" id="n8" data-title="Fase 2: preu"><section id="precio" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase2.png" alt="Icona de la fase 2">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 2 de 8</p>
+<h2>Preu</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-on" src="img/fase2.png" alt="Fase 2, l’actual">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:840px;gap:22px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="lead">Tots comenceu a <b>5</b>.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="lead">Compteu els símbols de preu <b>visibles</b>:</p>
+</div>
+<div class="row" style="gap:20px;padding-left:90px">
+<div class="dcard" style="flex:1">
+<img class="dico" src="img/sim_menos.png" alt="Símbol de baixar el preu">
+<p class="dname">−1 cadascun</p>
+</div>
+<div class="dcard" style="flex:1">
+<img class="dico" src="img/sim_mas.png" alt="Símbol de pujar el preu">
+<p class="dname">+1 cadascun</p>
+</div>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="lead">Moveu el vostre cub a la <b>zona de preus</b> del tauler.</p>
+</div>
+<div class="box">
+<h3>Per què importa?</h3>
+<ul class="list">
+<li>És el que cobreu per producte venut.</li>
+<li>Vermell: compra si el preu ≤ el seu número.</li>
+<li>Des de la fase 4, el més barat juga primer.</li>
+</ul>
+</div>
+</div>
+<div class="fig" style="flex:1">
+<img src="img/precio_ejemplo.png" alt="Exemple del reglament: plantilles amb dos símbols de baixar el preu visibles i el preu que baixa de 5 a 3" style="width:760px;height:431px;object-fit:contain;border-radius:12px">
+<p class="cap">Dos −$ visibles: el preu baixa de 5 a 3.</p>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les taules acabin → Fase 3: Producció</p>
+</section></div>
+<div class="sw" id="n9" data-title="Fase 3: producció"><section id="produccion" class="alt" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase3.png" alt="Icona de la fase 3">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 3 de 8</p>
+<h2>Producció</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-on" src="img/fase3.png" alt="Fase 3, l’actual">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:860px;gap:18px">
+<p class="lead"><b>Compteu quants productes fabriqueu:</b></p>
+<div class="box" style="gap:14px">
+<div class="nrow"><p class="plus">+1</p><p class="txt">per cada <b>caixa visible</b></p></div>
+<div class="nrow"><p class="plus">+1</p><p class="txt">per cada <b>casella tapada</b> per l’altra plantilla, amb símbol o sense</p></div>
+<div class="nrow"><p class="plus">+1</p><p class="txt">per cada <b>millora cara avall</b> davant vostre</p></div>
+<div class="nrow"><p class="plus">+1</p><p class="txt">per cada <b>fitxa de producte</b></p></div>
+</div>
+<p class="txt">Compte: les caselles que tapa una <b>millora</b> no produeixen.</p>
+<div class="nrow">
+<div class="num"><p class="num-t">→</p></div>
+<p class="lead">Agafeu tants <b>cubs</b> i poseu-los a la zona de <b>productes disponibles</b> de l’organitzador.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:22px">
+<div class="fig">
+<img src="img/ej_produccion.png" alt="Exemple del reglament: plantilles amb 4 caselles tapades i 3 caixes visibles, que donen 7 productes" style="width:480px;height:340px;object-fit:contain;border-radius:12px">
+<p class="cap">4 caselles tapades + 3 caixes visibles = 7 productes</p>
+</div>
+<div class="fig">
+<img src="img/ej_organizador.png" alt="Organitzador amb un cub a la zona de productes disponibles" style="width:320px;height:200px;object-fit:contain;border-radius:12px">
+<p class="cap">Zona de productes disponibles</p>
+</div>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les taules acabin → Fase 4: Millora</p>
+</section></div>
+<div class="sw" id="n10" data-title="Fase 4: millora"><section id="mejora" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase4.png" alt="Icona de la fase 4">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 4 de 8</p>
+<h2>Millora</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-on" src="img/fase4.png" alt="Fase 4, l’actual">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<p class="order">Per ordre de preu: el més barat primer (empat: menys PV)</p>
+<div class="row" style="gap:32px;align-items:stretch">
+<div class="box" style="flex:1;gap:18px">
+<div class="nrow">
+<img class="dico" src="img/sim_mejora.png" alt="Símbol de millora">
+<h3>Teniu el símbol taronja visible?</h3>
+</div>
+<p class="lead">Trieu <b>1 millora</b> de les 5 del tauler.</p>
+<img src="img/mejoras_bloque.png" alt="Il·lustració del reglament: el bloc de millores del tauler amb 5 millores cara amunt" style="width:580px;height:298px;object-fit:contain;align-self:center">
+</div>
+<div class="box" style="flex:1;gap:18px;border-left-color:#BF3626">
+<div class="nrow">
+<div class="num" style="background:#BF3626"><p class="num-t">✕</p></div>
+<h3>No el teniu visible?</h3>
+</div>
+<p class="lead">Agafeu <b>1 fitxa de producte</b>: +1 producte cada ronda.</p>
+<img src="img/comp_fichas.png" alt="Fitxa de producte" style="width:260px;height:240px;object-fit:contain;align-self:center">
+</div>
+</div>
+<div class="spacer"></div>
+<div class="row" style="gap:24px;align-items:center;justify-content:space-between">
+<p class="lead"><b>Totes dues serveixen a partir de la ronda següent.</b></p>
+<p class="next">Quan totes les taules acabin → Fase 5: Investigació</p>
+</div>
+</section></div>
+<div class="sw" id="n11" data-title="Fase 5: investigació"><section id="investigacion" class="alt" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase5.png" alt="Icona de la fase 5">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 5 de 8</p>
+<h2>Investigació</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-on" src="img/fase5.png" alt="Fase 5, l’actual">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<img src="img/ej_pista_tecnologias.png" alt="Il·lustració del reglament: la fila de tecnologies a la part de baix del tauler, cadascuna amb el seu cost i el seu espai per als progressos" style="width:1664px;height:176px;object-fit:contain;border-radius:12px">
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:1060px;gap:18px">
+<p class="order">Per ordre de preu</p>
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="txt"><b>1 progrés</b> per cada engranatge visible.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="txt">Poseu-los al costat de la <b>tecnologia</b> que vulgueu (els podeu repartir). Els que no feu servir, es perden.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="txt">En arribar al <b>cost</b>: retireu els progressos i poseu <b>1 oficina</b> a la tecnologia. Ja teniu el seu avantatge.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="txt">La <b>primera</b> empresa que l’aconsegueix s’endú la <b>patent</b>: PV al final.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:18px">
+<div class="row" style="gap:24px;align-items:center">
+<img src="img/ej_coste_tecnologia.png" alt="Cost d’una tecnologia i el seu espai per als progressos" style="width:150px;height:205px;object-fit:contain">
+<img src="img/comp_patentes.png" alt="Fitxes de patent" style="width:340px;height:212px;object-fit:contain">
+</div>
+<div class="box">
+<p class="txt">Mentre la patent és al tauler, costa <b>1 més</b>. Quan algú se l’endú, costa <b>1 menys</b>.</p>
+</div>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les taules acabin → Fase 6: Logística</p>
+</section></div>
+<div class="sw" id="n12" data-title="Fase 6: logística"><section id="logistica" data-transition="fade" style="padding:72px 128px;gap:30px">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase6.png" alt="Icona de la fase 6">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 6 de 8</p>
+<h2>Logística</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-on" src="img/fase6.png" alt="Fase 6, l’actual">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="diag" style="width:1664px;height:290px">
+<img src="img/region_etiquetas.png" alt="Il·lustració del reglament: una regió del tauler (Emirats) amb el seu cost en camions, l’espai per als progressos, les caselles d’oficina i els compradors" style="position:absolute;left:372px;top:6px;width:840px;height:238px;object-fit:contain">
+<div class="lab" style="left:24px;top:56px;width:496px;height:80px"><p class="lab-t" style="text-align:right">Cost per entrar (camions)</p></div>
+<div class="lab" style="left:24px;top:176px;width:494px;height:56px"><p class="lab-t" style="text-align:right">Aquí van els progressos</p></div>
+<div class="lab" style="left:1036px;top:32px;width:610px;height:88px"><p class="lab-t">Caselles d’oficina, amb els PV per dominar la regió</p></div>
+<div class="lab" style="left:1036px;top:170px;width:610px;height:52px"><p class="lab-t">Nom de la regió</p></div>
+<div class="lab" style="left:575px;top:246px;width:280px;height:40px"><p class="lab-t" style="text-align:center">▲ Compradors</p></div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:1060px;gap:16px">
+<p class="order">Per ordre de preu</p>
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="txt"><b>1 progrés</b> per cada camió visible.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="txt">Poseu-los en regions <b>connectades</b> (una línia al mapa) amb una oficina vostra. Els que no feu servir, es perden.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="txt">En arribar al cost: retireu els progressos i poseu <b>1 oficina</b> a la casella lliure <b>de més a l’esquerra</b>.</p>
+</div>
+</div>
+<div class="box" style="flex:1">
+<p class="txt"><b>Sense oficina, no podeu vendre</b> en aquella regió.</p>
+<p class="txt">Màxim 1 oficina per regió. Si no queden caselles lliures, no s’hi pot entrar.</p>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les taules acabin → Fase 7: Venda</p>
+</section></div>
+<div class="sw" id="n13" data-title="Fase 7: venda"><section id="venta" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase7.png" alt="Icona de la fase 7">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 7 de 8</p>
+<h2>Venda</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-on" src="img/fase7.png" alt="Fase 7, l’actual">
+<img class="st-i" src="img/fase8.png" alt="Fase 8">
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:900px;gap:22px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="lead">Per <b>ordre de preu</b>: primer el més baix (empat: menys PV).</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="lead">Només a les regions on tingueu <b>oficina</b>.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="lead"><b>1 producte per comprador</b>, d’esquerra a dreta, a tots els que us compren. Els altres se salten.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:20px">
+<div class="box" style="flex:1;border-left-color:#BF3626">
+<h3>Comprador vermell</h3>
+<p class="txt">Compra si el vostre preu és <b>igual o més baix</b> que el seu número.</p>
+</div>
+<div class="box" style="flex:1;border-left-color:#7B5EA7">
+<h3>Comprador lila</h3>
+<p class="txt">Compra al vostre preu si teniu <b>la seva tecnologia</b>.</p>
+</div>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="lead">El que no veneu <b>es perd</b>.</p>
+</div>
+</div>
+<div class="col" style="flex:1;gap:24px">
+<div class="fig">
+<img src="img/venta_ejemplo.png" alt="Exemple del reglament: una regió amb quatre compradors (vermell 6, Gamepad, NFC i 4G) i tres productes venuts; el comprador NFC queda buit" style="width:620px;height:314px;object-fit:contain">
+<p class="cap">Preu 3, amb les tecnologies Gamepad i 4G: compren el vermell, el Gamepad i el 4G. El NFC se salta i sobra 1 producte, que es perd.</p>
+</div>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Quan totes les taules acabin → Fase 8: Punts</p>
+</section></div>
+<div class="sw" id="n14" data-title="Fase 8: punts"><section id="puntos" class="alt" data-transition="fade">
+<div class="head">
+<div class="ph">
+<img class="ph-ico" src="img/fase8.png" alt="Icona de la fase 8">
+<div class="htext">
+<p class="eyebrow">Ronda 1 · Fase 8 de 8</p>
+<h2>Punts</h2>
+</div>
+</div>
+<div class="strip">
+<img class="st-i" src="img/fase1.png" alt="Fase 1">
+<img class="st-i" src="img/fase2.png" alt="Fase 2">
+<img class="st-i" src="img/fase3.png" alt="Fase 3">
+<img class="st-i" src="img/fase4.png" alt="Fase 4">
+<img class="st-i" src="img/fase5.png" alt="Fase 5">
+<img class="st-i" src="img/fase6.png" alt="Fase 6">
+<img class="st-i" src="img/fase7.png" alt="Fase 7">
+<img class="st-on" src="img/fase8.png" alt="Fase 8, l’actual">
+</div>
+</div>
+<div class="row" style="gap:48px;align-items:flex-start">
+<div class="col" style="width:960px;gap:20px">
+<div class="nrow">
+<div class="num"><p class="num-t">1</p></div>
+<p class="txt"><b>Productes venuts × el vostre preu</b> = PV. La taula de multiplicar és a la pantalla.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">2</p></div>
+<p class="txt"><b>Dominar una regió:</b> qui més hi ha venut guanya els PV del número sobre l’oficina <b>de més a la dreta</b>. Algunes també donen PV al segon.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">3</p></div>
+<p class="txt"><b>Empat:</b> guanya l’oficina de més a l’esquerra. Si no hi heu venut, no puntueu.</p>
+</div>
+<div class="nrow">
+<div class="num"><p class="num-t">4</p></div>
+<p class="txt">Apunteu els PV al <b>marcador de PV</b>.</p>
+</div>
+</div>
+<div class="fig" style="flex:1">
+<img src="img/control_region.png" alt="Exemple del reglament: als Emirats, l’empresa blava ven més que la groga i guanya els 4 PV de l’oficina de més a la dreta" style="width:640px;height:320px;object-fit:contain;border-radius:12px">
+<p class="cap">El blau ven més: guanya 4 PV, el número sobre l’oficina de més a la dreta (encara que sigui groga).</p>
+</div>
+</div>
+<div class="box">
+<h3>Per començar la ronda següent</h3>
+<div class="row" style="gap:28px">
+<p class="txt" style="flex:1"><b>1.</b> Retireu del tauler els cubs venuts.</p>
+<p class="txt" style="flex:1"><b>2.</b> Fora les millores que queden; 5 de noves.</p>
+<p class="txt" style="flex:1"><b>3.</b> Tots els preus, una altra vegada a 5.</p>
+<p class="txt" style="flex:1"><b>4.</b> Marcador de ronda a la següent.</p>
+</div>
+</div>
+<div class="spacer"></div>
+<p class="next">Rondes 2 a 4: ara pel vostre compte →</p>
+</section></div>
+<div class="sw" id="n15" data-title="Rondes 2 a 4: resum"><section id="fija" class="fixed" data-transition="fade">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:32px">
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center">
+<p class="fx-title">Rondes 2 a 4</p>
+<p class="fx-sub">pel vostre compte</p>
+</div>
+<p class="fx-win">Guanya qui tingui més PV després de la ronda 4</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;flex:1">
+<div style="width:1220px;display:flex;flex-direction:column;gap:10px">
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase1.png" alt="Icona de la fase 1: dues plantilles">
+<p class="fx-name">1. Planificació</p>
+<p class="fx-what">En secret, superposeu les 2 plantilles (i les millores). El que queda visible, s’activa.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase2.png" alt="Icona de la fase 2: preu">
+<p class="fx-name">2. Preu</p>
+<p class="fx-what">Comença a 5. Cada −$ visible: −1. Cada +$ visible: +1.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase3.png" alt="Icona de la fase 3: producció">
+<p class="fx-name">3. Producció</p>
+<p class="fx-what">+1 producte per cada caixa visible i cada casella que tapa l’altra plantilla. Millores cara avall i fitxes: +1.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase4.png" alt="Icona de la fase 4: millorar la producció">
+<p class="fx-name">4. Millora</p>
+<p class="fx-what">Símbol taronja visible: agafeu 1 millora. Si no, 1 fitxa de producte. Serveixen des de la ronda següent.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase5.png" alt="Icona de la fase 5: investigació">
+<p class="fx-name">5. Investigació</p>
+<p class="fx-what">1 progrés per engranatge visible. En arribar al cost: tecnologia. La primera empresa s’endú la patent.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase6.png" alt="Icona de la fase 6: logística">
+<p class="fx-name">6. Logística</p>
+<p class="fx-what">1 progrés per camió visible, en regions connectades a una oficina vostra. En arribar al cost: oficina.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase7.png" alt="Icona de la fase 7: venda">
+<p class="fx-name">7. Venda</p>
+<p class="fx-what">Només on tingueu oficina. D’esquerra a dreta, 1 producte per comprador. El que no es ven es perd.</p>
+</div>
+<div class="fx-row" style="flex:1">
+<img class="fx-ico" src="img/fase8.png" alt="Icona de la fase 8: punts de victòria">
+<p class="fx-name">8. Punts</p>
+<p class="fx-what">Venuts × el vostre preu + PV de les regions on més veneu (empat: oficina de més a l’esquerra).</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<div class="fx-box">
+<p class="fx-bt">Plantilles</p>
+<p class="fx-bx">Paral·leles o perpendiculars. Una tapa d’1 a 4 caselles de l’altra. Revelades, ja no es mouen.</p>
+<p class="fx-bx">Millora: tapa 2 caselles, o cara avall = +1 producte.</p>
+</div>
+<div class="fx-box red">
+<p class="fx-bt">Compradors</p>
+<p class="fx-bx"><b>Vermell:</b> compra si el vostre preu ≤ el seu número. <b>Lila:</b> compra si teniu la seva tecnologia. Sense saltar-ne cap.</p>
+</div>
+<div class="fx-box">
+<p class="fx-bt">Ordre (fases 4 a 7)</p>
+<p class="fx-bx">Preu més baix primer. Empat: menys PV.</p>
+</div>
+<div class="fx-box">
+<p class="fx-bt">Final</p>
+<p class="fx-bx">Cada ronda: el preu torna a 5. Després de la ronda 4: PV + patents. Empat: més tecnologies.</p>
+</div>
+</div>
+</div>
+</section></div>
+</main>
+<script>
+(function () {
+  var b = document.body, top = document.querySelector('.top'), stage = document.querySelector('.stage');
+  var menu = document.querySelector('.menu'), mbtn = document.querySelector('.mbtn'), fab = document.querySelector('.fab');
+  var label = document.querySelector('.mlabel');
+  var slides = [].slice.call(document.querySelectorAll('.sw'));
+  var items = [].slice.call(menu.querySelectorAll('button[data-i]'));
+  var cur = 0, idle;
+  function fsEl() { return document.fullscreenElement || document.webkitFullscreenElement; }
+  function isFs() { return !!fsEl() || (innerHeight >= screen.height - 1 && innerWidth >= screen.width - 1); }
+  function fit() {
+    b.classList.toggle('fs', isFs());
+    var h = b.classList.contains('fs') ? 0 : top.offsetHeight;
+    var s = Math.min(innerWidth / 1920, (innerHeight - h) / 1080);
+    document.documentElement.style.setProperty('--s', s.toFixed(5));
+  }
+  function isOpen() { return menu.classList.contains('open'); }
+  function openMenu(o) { menu.classList.toggle('open', o); b.classList.toggle('menu-open', o); }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    slides[cur].classList.remove('on'); items[cur].classList.remove('on');
+    cur = i;
+    slides[cur].classList.add('on'); items[cur].classList.add('on');
+    label.textContent = (cur + 1) + ' / ' + slides.length + ' · ' + slides[cur].getAttribute('data-title');
+    if (history.replaceState) history.replaceState(null, '', '#n' + (cur + 1));
+  }
+  function toggleFs() {
+    var d = document, e = d.documentElement;
+    if (fsEl()) { (d.exitFullscreen || d.webkitExitFullscreen).call(d); }
+    else if (e.requestFullscreen) { e.requestFullscreen(); }
+    else if (e.webkitRequestFullscreen) { e.webkitRequestFullscreen(); }
+  }
+  function wake() {
+    b.classList.add('awake'); clearTimeout(idle);
+    idle = setTimeout(function () { b.classList.remove('awake'); }, 2500);
+  }
+  function toggleMenu(ev) { ev.stopPropagation(); openMenu(!isOpen()); ev.currentTarget.blur(); }
+  mbtn.addEventListener('click', toggleMenu);
+  fab.addEventListener('click', toggleMenu);
+  items.forEach(function (x) { x.addEventListener('click', function (ev) { ev.stopPropagation(); go(+x.getAttribute('data-i')); openMenu(false); }); });
+  menu.addEventListener('click', function (ev) { ev.stopPropagation(); });
+  document.querySelector('.prev').addEventListener('click', function (ev) { go(cur - 1); ev.currentTarget.blur(); });
+  document.querySelector('.next').addEventListener('click', function (ev) { go(cur + 1); ev.currentTarget.blur(); });
+  document.querySelector('.fsb').addEventListener('click', function (ev) { openMenu(false); toggleFs(); ev.currentTarget.blur(); });
+  stage.addEventListener('click', function (ev) {
+    if (isOpen()) { openMenu(false); return; }
+    go(ev.clientX < innerWidth / 3 ? cur - 1 : cur + 1);
+  });
+  addEventListener('keydown', function (ev) {
+    var k = ev.key;
+    if (k === 'm' || k === 'M') openMenu(!isOpen());
+    else if (k === 'Escape') { if (!isOpen()) return; openMenu(false); }
+    else if (/^[1-9]$/.test(k) && +k <= slides.length) { go(+k - 1); openMenu(false); }
+    else if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { go(cur + 1); openMenu(false); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { go(cur - 1); openMenu(false); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(slides.length - 1);
+    else if (k === 'f' || k === 'F') toggleFs();
+    else return;
+    ev.preventDefault();
+  });
+  addEventListener('mousemove', wake);
+  addEventListener('resize', fit);
+  addEventListener('hashchange', function () { var m = /^#n(\d+)$/.exec(location.hash); if (m) go(+m[1] - 1); });
+  document.addEventListener('fullscreenchange', fit);
+  document.addEventListener('webkitfullscreenchange', fit);
+  var m = /^#n(\d+)$/.exec(location.hash);
+  fit(); go(m ? +m[1] - 1 : 0);
+})();
+</script>
+</body>
+</html>
